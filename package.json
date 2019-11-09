@@ -1,0 +1,19 @@
+{
+  "name": "ichat",
+  "version": "0.0.1",
+  "description": "NodeJs Socket IO chat application",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Bilash",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  }
+}
