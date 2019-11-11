@@ -4,7 +4,7 @@
   "description": "NodeJs Socket IO chat application",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "start": "node ./server/app.js"
   },
   "author": "Bilash",
   "license": "MIT",
