@@ -56,9 +56,9 @@
               </div></ol>
 
             <div class="chat__footer">
-                <form id="message-form">
-                    <input name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
-                    <button id="submit-btn">Send</button>
+                <form id="message-form" ng-submit="submitMessage()">
+                    <input name="message" ng-model="newInfo.message" type="text" placeholder="Message" autofocus autocomplete="off" />
+                    <button type="submit" id="submit-btn">Send</button>
                 </form>
                 <!-- <button id="send-location">Send location</button> -->
             </div>

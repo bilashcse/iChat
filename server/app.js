@@ -26,7 +26,6 @@ app.get('/', function(req, res) {
 io.on('connection', socket => {
     console.log('New user connected');
     socket.on('join', (data, callback) => {
-        console.log(data);
         if (!data.name || !data.room) {
             return callback(new Error('Name or room name is empty'));
         }
@@ -47,5 +46,23 @@ io.on('connection', socket => {
             .emit('newMessage', generateMessage('Admin', 'New User Joined!'));
 
         callback();
+    });
+
+    socket.on('createMessage', (data, callback) => {
+        const user = users.getUser(socket.id); 
+        if (user && (user.length > 0)&& data.text) {
+            io.to(user[0].room).emit('newMessage', generateMessage(user[0].name, data.text));
+        }
+
+        callback();
+    });
+
+    socket.on('disconnect', () => {
+        let user = users.removeUser(socket.id);
+        console.log(user);
+        // if(user){
+        //     io.to(user[0].room).emit('updateUsersList', users.getUserList(user[0].room));
+        //     io.to(user[0].room).emit('newMessage', generateMessage('Admin', `${user[0].name} has left ${user[0].room} chat room.`));
+        // }
     });
 });

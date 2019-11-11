@@ -5,6 +5,7 @@ const app = angular.module('myApp', []);
 /* Controllers */
 app.controller('AppCtrl', function($scope, socket) {
     $scope.info = {};
+    $scope.newInfo = {};
     $scope.isInit = true;
     $scope.messages = [];
  
@@ -25,7 +26,6 @@ app.controller('AppCtrl', function($scope, socket) {
 
 
     $scope.submitInitForm = function () {
-        console.log('Info', $scope.info);
         $scope.isInit = false;
 
         socket.emit('join', $scope.info, function (err) {
@@ -37,6 +37,14 @@ app.controller('AppCtrl', function($scope, socket) {
             }
         });
     }; 
+
+    $scope.submitMessage = function () {
+        socket.emit('createMessage', {
+            text: $scope.newInfo.message
+        }, function() {
+            $scope.newInfo.message = '';
+        });
+    };
 });
 
 /* Services */
