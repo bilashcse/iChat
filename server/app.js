@@ -14,11 +14,11 @@ let users = new Users();
 
 app.use(express.static('public'));
 
-server.listen(port, function() {
+server.listen(port, () => {
     console.log('Server listening on: http://localhost:%s', port);
 });
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     // eslint-disable-next-line no-undef
     res.sendFile(__dirname + '/index.html');
 });
