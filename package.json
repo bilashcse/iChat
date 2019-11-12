@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "NodeJs Socket IO chat application",
   "main": "app.js",
+  "engines": {
+    "node": "10.10.0"
+    },
   "scripts": {
     "start": "node ./server/app.js"
   },
