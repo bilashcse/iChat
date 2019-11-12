@@ -25,13 +25,10 @@ app.controller('AppCtrl', function($scope, socket) {
 
     $scope.submitInitForm = function () {
         $scope.isInit = false;
-
         socket.emit('join', $scope.info, function (err) {
             if (err) {
                 alert(err);
                 window.location.href = '/';
-            } else {
-                console.log('No Error');
             }
         });
     }; 
