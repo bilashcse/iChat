@@ -7,7 +7,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const port = app.get('port');
 
-const { Users } = require('./user.js');
+const { Users } = require('./utils/user');
 const { generateMessage } = require('./utils/message');
 
 let users = new Users();
@@ -59,10 +59,10 @@ io.on('connection', socket => {
 
     socket.on('disconnect', () => {
         let user = users.removeUser(socket.id);
-        console.log(user);
-        // if(user){
-        //     io.to(user[0].room).emit('updateUsersList', users.getUserList(user[0].room));
-        //     io.to(user[0].room).emit('newMessage', generateMessage('Admin', `${user[0].name} has left ${user[0].room} chat room.`));
-        // }
+
+        if(user){
+            io.to(user[0].room).emit('updateUsersList', users.getUserList(user[0].room));
+            io.to(user[0].room).emit('newMessage', generateMessage('Admin', `${user[0].name} has left ${user[0].room} chat room.`));
+        }
     });
 });
