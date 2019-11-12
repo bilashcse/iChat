@@ -60,7 +60,7 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         let user = users.removeUser(socket.id);
 
-        if(user){
+        if(user && (user.length > 0)){
             io.to(user[0].room).emit('updateUsersList', users.getUserList(user[0].room));
             io.to(user[0].room).emit('newMessage', generateMessage('Admin', `${user[0].name} has left ${user[0].room} chat room.`));
         }
