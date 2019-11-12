@@ -23,8 +23,6 @@ app.controller('AppCtrl', function($scope, socket) {
         $scope.messages.push(message);
     });
 
-
-
     $scope.submitInitForm = function () {
         $scope.isInit = false;
 
