@@ -1,11 +1,13 @@
 const express = require('express');
 
 const app = express();
-app.set('port', process.env.PORT || 4000);
+// eslint-disable-next-line no-undef
+const server = app.listen(process.env.PORT || 8080);
+// app.set('port', process.env.PORT || 4000);
 
-const server = require('http').Server(app);
+// const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const port = app.get('port');
+// const port = app.get('port');
 
 const { Users } = require('./utils/user');
 const { generateMessage } = require('./utils/message');
@@ -14,9 +16,9 @@ let users = new Users();
 
 app.use(express.static('public'));
 
-server.listen(port, () => {
-    console.log('Server listening on: http://localhost:%s', port);
-});
+// server.listen(port, () => {
+//     console.log('Server listening on: http://localhost:%s', port);
+// });
 
 app.get('/', (req, res) => {
     // eslint-disable-next-line no-undef
