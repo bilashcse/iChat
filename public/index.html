@@ -21,10 +21,10 @@
                     <label>Display name</label>
                     <input type="text" name="name" ng-model="info.name" placeholder="Enter name" autofocus>
                 </div>
-                <div class="form-field">
+                <!-- <div class="form-field" style="display: none;">
                     <label>Room name</label>
-                    <input type="text" name="room" ng-model="info.room" placeholder="Enter room name" autofocus>
-                </div>
+                    <input type="text" name="room" ng-model="info.room" placeholder="Enter room name" value="dev"  autofocus>
+                </div> -->
                 <div class="form-field">
                     <button>Join</button>
                 </div>
@@ -34,7 +34,8 @@
 
     <div class="chat"  ng-if="!isInit">
         <div class="chat__sidebar">
-            <h3>{{info.room}}</h3>
+            <!-- <h3>{{info.room}}</h3> -->
+            <h3>Online Users</h3>
             <div id="users">
                 <ol>
                     <li ng-repeat="user in users">{{user.name}}</li>

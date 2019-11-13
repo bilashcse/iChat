@@ -25,6 +25,7 @@ app.controller('AppCtrl', function($scope, socket) {
 
     $scope.submitInitForm = function () {
         $scope.isInit = false;
+        $scope.info.room = 'dev';
         socket.emit('join', $scope.info, function (err) {
             if (err) {
                 alert(err);
