@@ -3,7 +3,7 @@
 const app = angular.module('myApp', []);
 
 /* Controllers */
-app.controller('AppCtrl', function($scope, socket) {
+app.controller('AppCtrl', function($scope, socket,  $window) {
     $scope.info = {};
     $scope.newInfo = {};
     $scope.isInit = true;
@@ -21,6 +21,9 @@ app.controller('AppCtrl', function($scope, socket) {
             createdAt: moment(data.createdAt).format('LT')
         };
         $scope.messages.push(message);
+        $window.document.title = `${data.from} sends new message.`;
+        var x = document.getElementById('player');
+        x.play();
     });
 
     $scope.submitInitForm = function () {
